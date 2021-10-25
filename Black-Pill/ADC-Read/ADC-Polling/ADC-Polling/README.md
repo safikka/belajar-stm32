@@ -5,3 +5,5 @@ Pada repo ini, dilakukan pembacaan nilai ADC dengan menggunakan **metode _Pollin
 
 <img src="./asset/EntireSystem.jpeg" width="500">
 
+Mengapa _blocking_? <br>
+Bayangin ini semua diproses CPU dan dilakukan secara _serial_ sehingga dijalanin secara berurutan setiap proses yang terjadi. Sehingga jika ada pembacaan dengan menggunakan **metode _Polling_** maka dilakukan berurutan sampai beres baru dilanjut proses lain.

@@ -66,7 +66,7 @@ cd ~/.platformio/packages/tool-openocd/scripts/target/
 
 nano stm32f1x.cfg
 ```
-Edit bagian CPUTAPID jadi _**0x2ba01477**_ di line 42 
+Edit bagian CPUTAPID _**0x1ba01477**_ jadi _**0x2ba01477**_ di line 42 
 ```cfg
 if { [using_jtag] } {
     # See STM Document RM0008 Section 26.6.3

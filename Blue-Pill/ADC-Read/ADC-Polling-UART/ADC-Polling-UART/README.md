@@ -11,3 +11,8 @@ Sumber gambar: Digikey
 Nah dari contoh skema diatas, keliatan kan si CPU banyak bet proses yang dijalanin disana. Jadi kalo pake metode _**Polling**_ ini pastinya bikin _**blocking**_ atau ngehambat proses lain yang ada di CPU. gituu~~
 
 ## 2. Penjabaran Code
+```C
+// Deklarasi variabel (kebetulan ditaronya global)
+
+uint16_t raw; // buat nampung nilai konversi ADC
+char msg[10]; // nampung raw jadi string buat dikirim via uart

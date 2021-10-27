@@ -64,7 +64,7 @@ Kalo Linux, akses dimari:
 ```shell
 cd ~/.platformio/packages/tool-openocd/scripts/target/
 
-sudo nano stm32f1x.cfg
+nano stm32f1x.cfg
 ```
 Edit bagian CPUTAPID jadi _**0x2ba01477**_ di line 42 
 ```cfg

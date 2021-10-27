@@ -46,3 +46,34 @@ HAL_UART_Transmit(  &huart1,
                     HAL_MAX_DELAY);
 HAL_Delay(10);
 ```
+
+## 3. Settingan Platform.io
+### Settingan platformio.ini
+```ini
+[env:bluepill_f103c8]
+platform = ststm32
+board = bluepill_f103c8
+framework = stm32cube
+debug_tools= stlink
+upload_protocol = stlink
+```
+### Edit stm32f1x.cfg
+Dikarenakan belajar BluePill pake board _chinese_ jadi perlu adanya modifikasi dalam settingan OpenOCD nya biar bisa diupload. <br>
+
+Kalo Linux, akses dimari:
+```shell
+cd ~/.platformio/packages/tool-openocd/scripts/target/
+
+sudo nano stm32f1x.cfg
+```
+Edit bagian CPUTAPID jadi _**0x2ba01477**_ di line 42 
+```cfg
+if { [using_jtag] } {
+    # See STM Document RM0008 Section 26.6.3
+    set _CPUTAPID 0x3ba00477
+} {
+    # this is the SW-DP tap id not the jtag tap id
+    # set _CPUTAPID 0x1ba01477 settingan ori
+    set _CPUTAPID 0x2ba01477
+}
+```

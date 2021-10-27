@@ -105,12 +105,7 @@ int main(void)
     HAL_ADC_PollForConversion(&hadc1,HAL_MAX_DELAY);
     raw = HAL_ADC_GetValue(&hadc1);
     sprintf(msg,"%hu\r\n",raw);
-    // if(raw == 2000){
-      HAL_UART_Transmit(&huart1,(uint8_t *)msg,strlen(msg),HAL_MAX_DELAY);
-    // }
-    // else{
-    //   HAL_UART_Transmit(&huart1,(uint8_t *)"Jancok!\n",8,HAL_MAX_DELAY);
-    // }
+    HAL_UART_Transmit(&huart1,(uint8_t *)msg,strlen(msg),HAL_MAX_DELAY);
     HAL_Delay(10);
   }
   /* USER CODE END 3 */

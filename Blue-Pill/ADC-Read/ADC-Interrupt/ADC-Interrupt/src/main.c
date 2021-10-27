@@ -46,7 +46,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 uint16_t raw;
-char msg[10];
+uint8_t msg[10];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -98,6 +98,8 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   MX_USART1_UART_Init();
+  HAL_ADC_Start_IT(&hadc1);
+  HAL_UART_Transmit_IT(&huart1,msg,sizeof(msg));
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -107,8 +109,7 @@ int main(void)
   while (1)
   {
     LedBlink(1000);
-    HAL_UART_Transmit(&huart1,(uint8_t *)"Hello World!\n",13,HAL_MAX_DELAY);
-    HAL_ADC_Start_IT(&hadc1);
+    // HAL_UART_Transmit(&huart1,(uint8_t *)"Hello World!\n",13,HAL_MAX_DELAY);
     HAL_Delay(1);
   }
   /* USER CODE END 3 */
@@ -266,6 +267,11 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
   raw = HAL_ADC_GetValue(&hadc1);
+  sprintf(msg,"%d",raw);
+  HAL_ADC_Start_IT(&hadc1);
+}
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef* huart){
+  HAL_UART_Transmit_IT(&huart1,msg,sizeof(msg));
 }
 /* USER CODE END 4 */
 
